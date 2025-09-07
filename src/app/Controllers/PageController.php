@@ -2,20 +2,25 @@
 
 namespace App\Controllers;
 
-class PageController
+class PageController extends Controller
 {
     public function home()
     {
-        echo "Home";
+        require __DIR__ . "/../Views/home.php";
     }
 
     public function about()
     {
-        echo "About";
+        require __DIR__ . "/../Views/about.php";
     }
 
     public function contact()
     {
-        echo "Contact";
+        require __DIR__ . "/../Views/contact.php";
+    }
+
+    public function dashboard()
+    {
+        require __DIR__ . "/../Views/dashboard.php";
     }
 }
