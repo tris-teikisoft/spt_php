@@ -9,6 +9,7 @@
     <?php require __DIR__ . "/components/dashboard_nav.php"; ?>
     <main>
         <h1>Dashboard</h1>
+        
     </main>
     <?php require __DIR__ . "/components/dashboard_footer.php"; ?>
 </body>

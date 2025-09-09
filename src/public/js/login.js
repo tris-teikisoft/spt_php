@@ -25,6 +25,8 @@ $(document).ready(function () {
         }
       },
       error: function () {
+        $("#login-form button").text("Register");
+
         $("#form-error")
           .text("something_went_wrong")
           .css("display", "inline-block");

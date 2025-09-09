@@ -23,6 +23,8 @@ $(document).ready(function () {
         }
       },
       error: function () {
+        $("#register-form button").text("Register");
+
         $("#form-error")
           .text("something_went_wrong")
           .css("display", "inline-block");

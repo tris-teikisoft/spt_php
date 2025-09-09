@@ -42,6 +42,14 @@ class AuthController extends Controller
 
     public function loginPost()
     {
+        if (User::loggedIn())
+        {
+            echo json_encode([
+                "error" => "already_logged_in"
+            ]);
+            return;
+        }
+
         header("Content-Type: application/json");
 
         $usernameEmail = trim($_POST["username_email"]);
@@ -64,6 +72,12 @@ class AuthController extends Controller
         if (password_verify($password, $user["password"]))
         {
             $_SESSION["user_id"] = $user["id"];
+
+            // --- 3. Get user roles ---
+            $userRolesStmt = $this->conn->prepare("SELECT roles.name AS name FROM user_roles INNER JOIN roles ON user_roles.role_id = roles.id WHERE user_id = :a ;");
+            $userRolesStmt->execute([":a" => $user["id"]]);
+            $_SESSION["user_roles"] = $userRolesStmt->fetchAll(PDO::FETCH_COLUMN);
+
             echo json_encode([
                 "success" => "logged_in"
             ]);
@@ -78,6 +92,14 @@ class AuthController extends Controller
 
     public function registerPost()
     {
+        if (User::loggedIn())
+        {
+            echo json_encode([
+                "error" => "already_logged_in"
+            ]);
+            return;
+        }
+
         header("Content-Type: application/json");
 
         $username = trim($_POST["username"]);
@@ -114,6 +136,13 @@ class AuthController extends Controller
         $createUserStmt = $this->conn->prepare("INSERT INTO users (username, email, password) VALUES (:a, :b, :c);");
         $createdUser = $createUserStmt->execute([":a" => $username, ":b" => $email, ":c" => $hashedPassword]);
 
+        // --- 5. Get created user id ---
+        $createdUserId = $this->conn->lastInsertId();
+
+        // --- 6. Assign "user" [id = 1] role ---
+        $createdUserRoleStmt = $this->conn->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (:a, :b);");
+        $createdUserRole = $createdUserRoleStmt->execute([":a" => $createdUserId, ":b" => 1]);
+
         if ($createdUser)
         {
             echo json_encode([
@@ -130,6 +159,17 @@ class AuthController extends Controller
 
     public function logoutPost()
     {
-        
+        if (!User::loggedIn())
+        {
+            echo json_encode([
+                "error" => "already_logged_out"
+            ]);
+            return;
+        }
+
+        unset($_SESSION["user_id"]);
+        $_SESSION["logout_message"] = "logged_out";
+        header("Location: /");
+        exit;
     }
 }

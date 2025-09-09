@@ -8,6 +8,13 @@
 <body>
     <?php require __DIR__ . "/components/header.php"; ?>
     <main>
+        <?php
+            if (isset($_SESSION["logout_message"]))
+            {
+                echo "<p>{$_SESSION['logout_message']}</p>";
+                unset($_SESSION["logout_message"]);
+            }
+        ?>
         <h1>Home</h1>
     </main>
     <?php require __DIR__ . "/components/footer.php"; ?>

@@ -12,6 +12,9 @@
     <?php require __DIR__ . "/components/header.php"; ?>
     <main>
         <h1>Account</h1>
+        <form action="/logout" method="POST">
+            <button>Logout</button>
+        </form>
     </main>
     <?php require __DIR__ . "/components/footer.php"; ?>
 </body>
