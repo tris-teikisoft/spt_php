@@ -26,6 +26,7 @@ $router->get("/account", "account@AuthController");
 $router->get("/users", "all@UserController");
 $router->get("/user", "getById@UserController");
 
+$router->get("/set-lang", "setLang@LangController");
 
 $router->post("/login", "loginPost@AuthController");
 $router->post("/register", "registerPost@AuthController");

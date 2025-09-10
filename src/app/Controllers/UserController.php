@@ -169,7 +169,7 @@ class UserController extends Controller
         }
         
         echo json_encode([
-            'success' => 'something_went_wrong'
+            'error' => 'something_went_wrong'
         ]);
     }
 }

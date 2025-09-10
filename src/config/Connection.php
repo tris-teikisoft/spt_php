@@ -19,7 +19,7 @@ class Connection
             $user_password = $_ENV["USER_PASSWORD"];
             $charset = "utf8mb4";
 
-            $dsn = "mysql:host=$db_host;port=$db_port;dbname=$db_name;charset=utf8mb4;";
+            $dsn = "mysql:host=$db_host;port=$db_port;dbname=$db_name;charset=$charset;";
 
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

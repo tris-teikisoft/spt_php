@@ -35,7 +35,7 @@ foreach ($migrationFiles as $file)
         $stmt = $conn->prepare("INSERT INTO migrations (migration) VALUES (:a);");
         $stmt->execute([":a" => $migrationName]);
 
-        echo "Applied migration : $migrationName\n";
+        echo "Applied migration: $migrationName\n";
     }
 }
 

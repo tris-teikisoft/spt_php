@@ -1,3 +1,7 @@
+<?php
+    $lang = $_SESSION["lang"] ?? "en";
+    $translations = require __DIR__ . "/../../lang/{$lang}.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
                 unset($_SESSION["logout_message"]);
             }
         ?>
-        <h1>Home</h1>
+        <h1><?= $translations["home"] ?></h1>
     </main>
     <?php require __DIR__ . "/components/footer.php"; ?>
 </body>

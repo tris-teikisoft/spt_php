@@ -21,12 +21,12 @@ docker-compose up -d
 ## 2. Run database migrations
 
 ```bash
-    docker exec -it spt-apache bash
-    php migrate.php
+docker exec -it spt-apache bash
+php migrate.php
 ```
 
 ## 3. Seed initial roles
 
 ```bash
-    INSERT INTO roles(name) VALUES ("user"), ("admin");
+INSERT INTO roles(name) VALUES ("user"), ("admin");
 ```
