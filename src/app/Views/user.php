@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User - <?= $this->appName ?></title>
+    <title><?= $translations["users"] ?> - <?= $this->appName ?></title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="/js/user.js"></script>
@@ -13,18 +13,18 @@
 
     <main>
         <section>
-            <h1>Users</h1>
+            <h1><?= $translations["users"] ?></h1>
         </section>
         
         <section>
-            <h2>User:</h2>
+            <h2><?= $translations["user"] ?>:</h2>
 
-            <p>Username: <strong><?= $user["username"] ?></strong></p>
-            <p>Email: <strong><?= $user["email"] ?></strong></p>
+            <p><?php $translations["username"] ?>: <strong><?= $user["username"] ?></strong></p>
+            <p><?php $translations["email"] ?>: <strong><?= $user["email"] ?></strong></p>
         </section>
 
         <section>
-            <h3>Current Roles:</h3>
+            <h3><?php $translations["current_roles"] ?>:</h3>
 
             <ul>
                 <?php
@@ -37,7 +37,7 @@
                                     <input type='hidden' name='role_id' value='$role[role_id]'>
                                     <input type='hidden' name='user_id' value='$role[user_id]'>
                                     
-                                    <button type='submit'>Delete Role</button>
+                                    <button type='submit'>{$translations['delete_role']}</button>
                                 </form>
                             </div>
                         </li>";
@@ -47,14 +47,14 @@
             
             <div>
                 <div>
-                    <h3>Add New Role</h3>
+                    <h3><?php $translations["add_new_role"] ?></h3>
                 </div>
 
                 <form id="role-form">
                     <input type="hidden" name="user_id" value="<?= $user["id"] ?>">
 
                     <div>
-                        <label for="role_id">Role:</label>
+                        <label for="role_id"><?php $translations["role"] ?>:</label>
                         <select name="role_id" id="role_id">
                             <?php 
                                 foreach ($roles as $role)
@@ -65,7 +65,7 @@
                         </select>
                     </div>
                     
-                    <button type="submit">Add Role</button>
+                    <button type="submit"><?php $translations["add_role"] ?></button>
                 </form>
             </div>
         </section>

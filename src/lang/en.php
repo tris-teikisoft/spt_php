@@ -12,5 +12,19 @@ return [
     "email" => "Email",
     "password" => "Password",
     "confirm_password" => "Confirm Password",
-    "have_account_login" => "Already have an account? Login"
+    "have_account_login" => "Already have an account? Login",
+    "about" => "About",
+    "contact" => "Contact",
+    "account" => "Account",
+    "logout" => "Logout",
+    "no_users" => "No users in users table.",
+    "users" => "Users",
+    "user" => "User",
+    "current_roles" => "Current Roles",
+    "delete_role" => "Delete Role",
+    "add_new_role" => "Add New Role",
+    "role" => "Role",
+    "add_role" => "Add Role",
+    "update_user" => "Update User",
+    "no_user" => "No users"
 ];

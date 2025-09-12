@@ -10,6 +10,10 @@ session_start();
 $dotenv = Dotenv::createImmutable(__DIR__ . "/../");
 $dotenv->load();
 
+// --- Language Handling ----
+$lang = $_SESSION["lang"] ?? "en";
+$translations = require __DIR__ . "/lang/{$lang}.php";
+
 $router = new Router();
 
 // --- Specify Routes Here ---

@@ -1,7 +1,3 @@
-<?php
-    $lang = $_SESSION["lang"] ?? "en";
-    $translations = require __DIR__ . "/../../lang/{$lang}.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
